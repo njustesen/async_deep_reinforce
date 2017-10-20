@@ -5,14 +5,14 @@ import random
 import time
 import sys
 
-from game_state import GameState
-from game_state import ACTION_SIZE
+from game_state_vizdoom import GameState
+from game_state_vizdoom import ACTION_SIZE
 from game_ac_network import GameACFFNetwork, GameACLSTMNetwork
 
-from constants import GAMMA
-from constants import LOCAL_T_MAX
-from constants import ENTROPY_BETA
-from constants import USE_LSTM
+from constants_vizdoom import GAMMA
+from constants_vizdoom import LOCAL_T_MAX
+from constants_vizdoom import ENTROPY_BETA
+from constants_vizdoom import USE_LSTM
 
 LOG_INTERVAL = 100
 PERFORMANCE_LOG_INTERVAL = 1000
@@ -52,8 +52,9 @@ class A3CTrainingThread(object):
       
     self.sync = self.local_network.sync_from(global_network)
     
-    self.game_state = GameState(113 * thread_index)
-    
+    #self.game_state = GameState(113 * thread_index)
+    self.game_state = GameState(display=True)
+
     self.local_t = 0
 
     self.initial_learning_rate = initial_learning_rate

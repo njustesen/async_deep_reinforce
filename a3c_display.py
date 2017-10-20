@@ -3,19 +3,19 @@ import tensorflow as tf
 import numpy as np
 import random
 
-from game_state import GameState
+from game_state_vizdoom import GameState
 from game_ac_network import GameACFFNetwork, GameACLSTMNetwork
 from a3c_training_thread import A3CTrainingThread
 from rmsprop_applier import RMSPropApplier
 
-from constants import ACTION_SIZE
-from constants import PARALLEL_SIZE
-from constants import CHECKPOINT_DIR
-from constants import RMSP_EPSILON
-from constants import RMSP_ALPHA
-from constants import GRAD_NORM_CLIP
-from constants import USE_GPU
-from constants import USE_LSTM
+from constants_vizdoom import ACTION_SIZE
+from constants_vizdoom import PARALLEL_SIZE
+from constants_vizdoom import CHECKPOINT_DIR
+from constants_vizdoom import RMSP_EPSILON
+from constants_vizdoom import RMSP_ALPHA
+from constants_vizdoom import GRAD_NORM_CLIP
+from constants_vizdoom import USE_GPU
+from constants_vizdoom import USE_LSTM
 
 def choose_action(pi_values):
   return np.random.choice(range(len(pi_values)), p=pi_values)  
@@ -49,7 +49,7 @@ if checkpoint and checkpoint.model_checkpoint_path:
 else:
   print("Could not find old checkpoint")
 
-game_state = GameState(0, display=True, no_op_max=0)
+game_state = GameState(display=True, no_op_max=0)
 
 while True:
   pi_values = global_network.run_policy(sess, game_state.s_t)

@@ -6,20 +6,20 @@ import sys
 import matplotlib.pyplot as plt
 import random
 
-from game_state import GameState
+from game_state_vizdoom import GameState
 from game_ac_network import GameACFFNetwork, GameACLSTMNetwork
 from a3c_training_thread import A3CTrainingThread
 from rmsprop_applier import RMSPropApplier
 
-from constants import ACTION_SIZE
-from constants import PARALLEL_SIZE
-from constants import MAX_TIME_STEP
-from constants import CHECKPOINT_DIR
-from constants import RMSP_EPSILON
-from constants import RMSP_ALPHA
-from constants import GRAD_NORM_CLIP
-from constants import USE_GPU
-from constants import USE_LSTM
+from constants_vizdoom import ACTION_SIZE
+from constants_vizdoom import PARALLEL_SIZE
+from constants_vizdoom import MAX_TIME_STEP
+from constants_vizdoom import CHECKPOINT_DIR
+from constants_vizdoom import RMSP_EPSILON
+from constants_vizdoom import RMSP_ALPHA
+from constants_vizdoom import GRAD_NORM_CLIP
+from constants_vizdoom import USE_GPU
+from constants_vizdoom import USE_LSTM
 
 # use CPU for weight visualize tool
 device = "/cpu:0"

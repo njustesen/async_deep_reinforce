@@ -13,19 +13,20 @@ from game_ac_network import GameACFFNetwork, GameACLSTMNetwork
 from a3c_training_thread import A3CTrainingThread
 from rmsprop_applier import RMSPropApplier
 
-from constants import ACTION_SIZE
-from constants import PARALLEL_SIZE
-from constants import INITIAL_ALPHA_LOW
-from constants import INITIAL_ALPHA_HIGH
-from constants import INITIAL_ALPHA_LOG_RATE
-from constants import MAX_TIME_STEP
-from constants import CHECKPOINT_DIR
-from constants import LOG_FILE
-from constants import RMSP_EPSILON
-from constants import RMSP_ALPHA
-from constants import GRAD_NORM_CLIP
-from constants import USE_GPU
-from constants import USE_LSTM
+from constants_vizdoom import ACTION_SIZE
+from constants_vizdoom import PARALLEL_SIZE
+from constants_vizdoom import INITIAL_ALPHA_LOW
+from constants_vizdoom import INITIAL_ALPHA_HIGH
+from constants_vizdoom import INITIAL_ALPHA_LOG_RATE
+from constants_vizdoom import MAX_TIME_STEP
+from constants_vizdoom import CHECKPOINT
+from constants_vizdoom import CHECKPOINT_DIR
+from constants_vizdoom import LOG_FILE
+from constants_vizdoom import RMSP_EPSILON
+from constants_vizdoom import RMSP_ALPHA
+from constants_vizdoom import GRAD_NORM_CLIP
+from constants_vizdoom import USE_GPU
+from constants_vizdoom import USE_LSTM
 
 
 def log_uniform(lo, hi, rate):
@@ -87,7 +88,7 @@ summary_writer = tf.summary.FileWriter(LOG_FILE, sess.graph)
 # init or load checkpoint with saver
 saver = tf.train.Saver()
 checkpoint = tf.train.get_checkpoint_state(CHECKPOINT_DIR)
-if checkpoint and checkpoint.model_checkpoint_path:
+if CHECKPOINT and checkpoint and checkpoint.model_checkpoint_path:
   saver.restore(sess, checkpoint.model_checkpoint_path)
   print("checkpoint loaded:", checkpoint.model_checkpoint_path)
   tokens = checkpoint.model_checkpoint_path.split("-")
